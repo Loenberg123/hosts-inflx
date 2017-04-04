@@ -2,6 +2,7 @@
 import os,sys,subprocess,argparse,json
 
 # Get hosts sending data to a influxDB database
+# https://github.com/Loenberg123/hosts-inflx
 
 parser = argparse.ArgumentParser()
 parser.add_argument("-s", "--secure", help="Usar https en lugar de http", const="https", default="http", action="store_const")
