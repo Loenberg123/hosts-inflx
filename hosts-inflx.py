@@ -18,7 +18,7 @@ result = subprocess.check_output(q, shell=True)
 #print result
 
 resp_dict = json.loads(result)
-data = resp_dict['results'][0]['series'][0]['values']
+data = resp_dict['results'][0]['series'][1]['values']
 n = len(data)
 for i in range(0,n):
 	form = data[i]
