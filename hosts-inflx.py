@@ -17,8 +17,10 @@ q = "curl -s -G "+args.secure+"://"+args.ip+":8086/query --data-urlencode db=\""
 result = subprocess.check_output(q, shell=True)
 #print result
 
+# If it doesn't return the values you expect, change [3] for another value in data var.
+
 resp_dict = json.loads(result)
-data = resp_dict['results'][0]['series'][1]['values']
+data = resp_dict['results'][0]['series'][3]['values']
 n = len(data)
 for i in range(0,n):
 	form = data[i]
