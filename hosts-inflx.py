@@ -13,14 +13,13 @@ if len(sys.argv)==1:
     sys.exit(1)
 args = parser.parse_args()
 
-q = "curl -s -G "+args.secure+"://"+args.ip+":8086/query --data-urlencode db=\""+args.database+"\" --data-urlencode \"q=SHOW TAG VALUES WITH KEY = host\""
+#q = "curl -s -G "+args.secure+"://"+args.ip+":8086/query --data-urlencode db=\""+args.database+"\" --data-urlencode \"q=SHOW TAG VALUES WITH KEY = host\""
+q = "curl -s -G "+args.secure+"://"+args.ip+":8086/query --data-urlencode db=\""+args.database+"\" --data-urlencode \"q=SHOW TAG VALUES FROM kernel WITH KEY = host\""
 result = subprocess.check_output(q, shell=True)
 #print result
 
-# If it doesn't return the values you expect, change [3] for another value in data var.
-
 resp_dict = json.loads(result)
-data = resp_dict['results'][0]['series'][3]['values']
+data = resp_dict['results'][0]['series'][0]['values']
 n = len(data)
 for i in range(0,n):
 	form = data[i]
